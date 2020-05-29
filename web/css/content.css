@@ -1,20 +1,21 @@
 .content{
     width: 100%;
-    margin: 3px;
+    margin: 0;
 }
 .left{
     float: left;
-    height: 600px;
-margin: 5px;
-    width: 27%;
-    background-color: #00c4ff;
+    height: auto;
+    width: 20%;
+    margin: 0;
     border-radius: 5px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 80%;
+    font-weight: bold;
 }
 .right{
     float: left;
-    height: 600px;
-    width: 71%;
-    margin: 5px;
-    background-color: #00c4ff;
+    height: auto;
+    width: 80%;
+    margin: 0;
     border-radius: 5px;
 }
