@@ -40,11 +40,13 @@
     voice-family: "\"}\"";
     text-decoration: none;
     line-height:30px;
+    text-align:center;
+    display: block;
 }
 .menu li a:link, .menu li a:visited {
     color: #888;
     display: block;
-    text-align:center;
+
 
 }
 .menu li a:hover, .menu li a:active {

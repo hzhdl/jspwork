@@ -1,3 +1,7 @@
+<%@ page import="blog.Blog" %>
+<%@ page import="java.sql.Date" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.SQLException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -7,7 +11,7 @@
 </head>
 <body>
 <!-- 头部 -->
-<div class="top1"style="text-align: center;">
+<div class="top1" style="text-align: center;">
     <ul>
         <li><a id="name" href="index.jsp">xxx的博客</a></li>
         <li><a id="root" href="root/rootlogin.jsp">管理登录</a></li>
@@ -17,13 +21,24 @@
         <li><a id="n4" href="Blog.jsp">博客</a></li>
     </ul>
 </div>
-<div class='top2'style="text-align: center;">
-    <h3 class='h1'style="text-align:center;line-height: 240px;width: 100%;color: whitesmoke;">凡心之所向 即锋之所指</h3>
+<div class='top2' style="text-align: center;">
+    <h3 class='h1' style="text-align:center;line-height: 240px;width: 100%;color: whitesmoke;">凡心之所向 即锋之所指</h3>
     <p class='h4' style="text-align:center;line-height: 40px;width: 100%;color: whitesmoke;">The direction of the heart is the direction of the front</p>
 </div>
 <div class="content">
     <div class="left"></div>
-    <div class="right"></div>
+    <div class="right">
+        <%
+            Blog b= null;
+                b = new Blog();
+            ResultSet res=b.check(new Date(new java.util.Date().getTime()),true);
+            while(res.next()){
+                out.print(res.getString(2)+"  "+res.getString(3)+"  "+res.getString(4)+"  "+res.getString(5)+"  "+res.getString(6)+"  ");
+                %><br/><%
+            }
+            b.del();
+        %>
+    </div>
 </div>
 </body>
 </html>
