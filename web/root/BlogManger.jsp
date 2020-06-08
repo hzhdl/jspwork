@@ -28,14 +28,15 @@
     <div class="left">
         <div class="menu" style="width: 100%;height: auto;">
             <ul>
-                <li id="add" style="float: left;width: 100%"><a href="#" title="添加博客">添加博客</a></li>
-                <li style="float: left;width: 100%"><a href="#" title="分类专栏">分类专栏</a></li>
-                <li style="float: left;width: 100%"><a href="#" title="评论管理">评论管理</a></li>
-                <li style="float: left;width: 100%"><a href="#" title="热点">新闻热点</a></li>
+                <li id="add" style="float: left;width: 100%"><a href="addblog.jsp">添加博客</a></li>
+                <li style="float: left;width: 100%"><a href="#">分类专栏</a></li>
+                <li style="float: left;width: 100%"><a href="#">评论管理</a></li>
+                <li style="float: left;width: 100%"><a href="#">新闻热点</a></li>
             </ul>
         </div>
     </div>
-    <div class="right"></div>
+    <div class="right">
+    </div>
 </div>
 </body>
 </html>

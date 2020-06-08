@@ -29,8 +29,44 @@
     <p class='h4' style="text-align:center;line-height: 40px;width: 100%;color: whitesmoke;">The direction of the heart is the direction of the front</p>
 </div>
 <div class="content">
-    <div class="left"></div>
-    <div class="right"></div>
+    <div class="left">
+        <div class="head">
+            <span>dfasdf</span>
+        </div>
+        <div class="blog">
+
+            <div class="tittle"></div>
+            <div class="summary"></div>
+            <div class="foot">
+                <img src="#"/>
+                <a href="#"><span>标签</span></a>
+                <img src="#"/>
+                <a href="#"><span>时间</span></a>
+                <img src="#"/>
+                <a href="#"><span>访问人数</span></a>
+                <img src="#"/>
+                <a href="#"><span>作者</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="menu1" style="width: 100%;height: auto;">
+            <ul>
+                <li id="box1" style="float: left;width: 100%"><a href="#"></a></li>
+                <li style="float: left;width: 100%"><a href="#" ></a></li>
+                <li style="float: left;width: 100%"><a href="#" ></a></li>
+                <li style="float: left;width: 100%"><a href="#" ></a></li>
+            </ul>
+        </div>
+        <div class="menu2" style="width: 100%;height: auto;">
+            <ul>
+                <li id="box2" style="float: left;width: 100%"><a href="#"></a></li>
+                <li style="float: left;width: 100%"><a href="#" ></a></li>
+                <li style="float: left;width: 100%"><a href="#" ></a></li>
+                <li style="float: left;width: 100%"><a href="#" ></a></li>
+            </ul>
+        </div>
+    </div>
 </div>
 </body>
 </html>

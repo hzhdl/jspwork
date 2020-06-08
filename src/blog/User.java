@@ -11,6 +11,21 @@ public class User extends Sql{
         s.executeUpdate(s1);
         return true;
     }
+    public Boolean checkpwd(String pwd) throws SQLException {
+        Statement s=this.getConnection().createStatement();
+        String s1="select RootPassword from rootuser where RootName='root'";
+        s.execute(s1);
+        ResultSet r=s.getResultSet();
+        r.next();
+        String p=r.getString(1);
+        if(p.equals(pwd)){
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
     public Boolean changeName(String Name) throws SQLException {
         Statement s=this.getConnection().createStatement();
         String s1="UPDATE rootuser set RealName='"+Name+"' where RootName='root'";

@@ -83,10 +83,10 @@
 <body>
 <div class="background">
 <div class="signup-form">
-    <form action="rootindex.jsp" method="post">
+    <form action="../login" method="post">
         <h1>Sign Up</h1>
-        <input type="text" placeholder="用户名" class="txtb"/>
-        <input type="password" placeholder="密码" class="txtb1"/>
+        <input type="text" placeholder="用户名" class="txtb" name="name"/>
+        <input type="password" placeholder="密码" class="txtb1" name="pwd"/>
         <input type="submit" value="登录" class="signup-btn"/>
     </form>
 </div>

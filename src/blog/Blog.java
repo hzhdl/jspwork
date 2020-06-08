@@ -1,5 +1,6 @@
 package blog;
 
+import java.math.BigInteger;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +11,6 @@ import java.text.SimpleDateFormat;
 public class Blog extends Sql{
     public Blog() throws SQLException {
         //Statement s=this.getConnection().createStatement();
-        //
     }
     //查询
     public ResultSet check(Date time, Boolean flag) throws SQLException {//根据时间查询
@@ -72,5 +72,19 @@ public class Blog extends Sql{
             s.close();
         }
         return true;
+    }
+    //其他需求实现
+    public BigInteger Findmax() throws SQLException {
+        Statement s=this.getConnection().createStatement();
+        String find="SELECT MAX(Number) from blog";
+        BigInteger num;
+        s.execute(find);
+        ResultSet r=s.getResultSet();
+        r.next();
+        num=r.getBigDecimal(1).toBigInteger();
+        r.close();
+        s.close();
+        return num;
+
     }
 }

@@ -1,8 +1,8 @@
-<!DOCTYPE>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="utf-8" />
-    <title>Simple example - Editor.md examples</title>
+    <title>添加博客</title>
     <link rel="stylesheet" href="../editor.md-master/examples/css/style.css" />
     <link rel="stylesheet" href="../editor.md-master/css/editormd.css" />
     <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
@@ -10,44 +10,17 @@
 <body>
 <div id="layout">
     <header>
-        <h1>Simple example</h1>
-
+        <h1>XXX的个人博客</h1>
     </header>
-    <button id="gethtml" onclick="tijiao()" style="background: #01a0e4">SAVE</button>
+    <div class="head" style="float: left;background: #96e2ff;width: 100%; height: auto">
+        <button id="gethtml" onclick="showdiv()" style="height: 30px;float: right;margin: 5px">保存</button>
+        <button href="#" style="height: 30px;float: right;margin: 5px">上传图片</button><%--  功能暂定，后续开发  --%>
+
+    </div>
     <div id="test-editormd">
-                <textarea style="display:none;">[TOC]
-
-#### Disabled options
-
-- TeX (Based on KaTeX);
-- Emoji;
-- Task lists;
-- HTML tags decode;
-- Flowchart and Sequence Diagram;
-
-#### Editor.md directory
-
-    editor.md/
-            lib/
-            css/
-            scss/
-            tests/
-            fonts/
-            images/
-            plugins/
-            examples/
-            languages/
-            editormd.js
-            ...
-
-```html
-&lt;!-- English --&gt;
-&lt;script src="../dist/js/languages/en.js"&gt;&lt;/script&gt;
-
-&lt;!-- 繁體中文 --&gt;
-&lt;script src="../dist/js/languages/zh-tw.js"&gt;&lt;/script&gt;
-```
-</textarea>
+        <form>
+                <textarea id="tet" style="display:none;">
+</textarea></form>
     </div>
 </div>
 <script src="../editor.md-master/examples/js/jquery.min.js"></script>
@@ -58,9 +31,11 @@
     $(function() {
         testEditor = editormd("test-editormd", {
             width: "90%",
-            height: 740,
-            path : './editor.md-master/lib/',
-            theme : "dark",
+            height: 640,
+            syncScrolling : "single",
+            path : '../editor.md-master/lib/',
+            saveHTMLToTextarea : true,
+            /*theme : "dark",
             previewTheme : "dark",
             editorTheme : "pastel-on-dark",
             //markdown : md,
@@ -97,7 +72,7 @@
                 //this.height(480);
                 //this.resize("100%", 640);
             }
-
+*/
         });
 
         /*
@@ -110,21 +85,104 @@
         });
         */
     });
-    function tijiao(){
+    /*function tijiao(){
         var htmlco = testEditor.getHTML();
         //alert(htmlco);
         $.ajax(
-            {data:{'text':htmlco},
+            {data:{
+                te:htmlco,
+
+                },
                 dataType:'text',
                 success: function(data){
                     alert(data);
                 },
                 type:'post',
-                url:'./SaveBlog'
+                url:'../SaveBlog'
             }
         )
-        window.location.href="test.jsp"
+        //window.location.href="../saveblog"
+    }*/
+</script>
+
+<div id="c1" class="c" style="display: none;position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: black;
+            opacity: 0.6;
+            z-index: 100;"></div>
+<div id="my_dialog" class="m" style="display: none;width: 500px;
+            height: 400px;
+            background-color: white;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-left: -250px;
+            margin-top: -200px;
+            z-index: 101;" >
+    <form id="tj" action="../SaveBlog">
+        <p>标题：<input type="text" id="tittle" name="tittle"/></p>
+        <p>摘要：<input type="text" id="summary" name="summary"/></p>
+        <p>标签：<input type="text" id="tips" name="tips"/></p>
+        <input type="text" id="te" name="te" hidden/>
+        <div style="float:right;">
+            <input type="button" class="my-btn-gray" onclick="create_paper_cancel()" value="取消"></input>
+            <input type="button" class="my-btn-blue" onclick="create_paper_save()" value="保存"></input>
+        </div>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script type="text/javascript">
+    function showdiv(){
+        document.getElementById('my_dialog').style.display="block";
+        document.getElementById('c1').style.display="block";
     }
+
+    function create_paper_cancel(){
+        document.getElementById('my_dialog').style.display="none";
+        document.getElementById('c1').style.display="none";
+    }
+    function create_paper_save(){
+        document.getElementById('my_dialog').style.display="none";
+        document.getElementById('c1').style.display="none";
+        var htmlco = testEditor.getMarkdown();
+        //var htmlco = document.getElementById('tet').value;
+        var s = document.getElementById('summary').value;
+        var ti = document.getElementById('tips').value;
+        var t = document.getElementById('tittle').value;
+        //var tj=document.getElementById('tj');
+        /*var converter = new showdown.Converter();
+        //进行转换
+        var html = converter.makeHtml(htmlco);*/
+
+        // var html=marked(htmlco);
+        //htmlco.replaceAll('\n',"\r\n");
+        //alert(htmlco);
+        //htmlco.replace("\n","\r\n");
+        //document.getElementById('te').value=htmlco;
+        $.ajax(
+            {data:{
+                    te:htmlco,
+                    tittle:t,
+                    summary:s,
+                    tips:ti,
+                },
+                dataType:'text',
+                success: function(){
+                    alert("save successful！");
+                    window.location.href="BlogManger.jsp";
+                },
+                type:'post',
+                url:'../SaveBlog'
+            }
+        )
+
+        //tj.method="post";
+        //tj.submit();
+    }
+
 </script>
 </body>
 </html>
