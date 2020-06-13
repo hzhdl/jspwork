@@ -1,12 +1,13 @@
 <%@ page import="java.io.PrintWriter" %>
-<%@ page import="java.io.FileReader" %><%--
+<%@ page import="java.io.FileReader" %>
+<%@ page import="blog.Blog" %><%--
   Created by IntelliJ IDEA.
   User: smallmonkey
   Date: 2020/5/27
   Time: 15:23
   To change this template use File | Settings | File Templates.
 --%>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html lang="zh">
 <head>
     <meta charset="utf-8" />
@@ -18,8 +19,10 @@
 <div style="margin-left: 100px;width: 90%" id="test-editormd">
     　　　　<textarea style="display:none;"><%
     String path=request.getServletContext().getRealPath("/");
-    String num="25";
-    FileReader fr=new FileReader(path+"Blog/blog"+num+".txt");
+    String num=request.getParameter("te");
+    Blog b=new Blog();
+    String p=b.Findpath(num);
+    FileReader fr=new FileReader(path+p);
     int c=fr.read();
     while(c!=-1) {
         out.print((char)c);

@@ -5,12 +5,11 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-public class Blog extends Sql{
-    public Blog() throws SQLException {
-        //Statement s=this.getConnection().createStatement();
+public class Essay extends Sql{
+    public Essay(){
+
     }
     //查询
     public ResultSet check(Date time, Boolean flag) throws SQLException {//根据时间查询
@@ -19,10 +18,10 @@ public class Blog extends Sql{
         String t=df.format(time);
         String s1;
         if(flag){
-            s1="SELECT * FROM `blog` where Time <= '"+t+"'";
+            s1="SELECT * FROM `essay` where Time <= '"+t+"'";
         }
         else{
-            s1="SELECT * FROM `blog` where Time >= '"+t+"'";
+            s1="SELECT * FROM `essay` where Time >= '"+t+"'";
         }
         s.executeQuery(s1);
         return s.getResultSet();
@@ -33,21 +32,21 @@ public class Blog extends Sql{
         String st=df.format(stime);
         String et=df.format(etime);
         String s1;
-        s1="SELECT * FROM `blog` where Time >= '"+st+"' and Time <= '"+et+"'";
+        s1="SELECT * FROM `essay` where Time >= '"+st+"' and Time <= '"+et+"'";
         s.executeQuery(s1);
         return s.getResultSet();
     }
     public ResultSet check(String tip) throws SQLException {//根据tip查询
         Statement s=this.getConnection().createStatement();
         String s1;
-        s1="SELECT * from blog where Tip LIKE '%"+tip+"%'";
+        s1="SELECT * from essay where Tip LIKE '%"+tip+"%'";
         s.executeQuery(s1);
         return s.getResultSet();
     }
     public ResultSet LikeFind(String key) throws SQLException {//根据tittle或者summary查询
         Statement s=this.getConnection().createStatement();
         String s1;
-        s1="SELECT * from blog where Tip LIKE '%"+key+"%' OR Tittle like '%"+key+"%'";
+        s1="SELECT * from essay where Tip LIKE '%"+key+"%' OR Tittle like '%"+key+"%'";
         s.executeQuery(s1);
         return s.getResultSet();
     }
@@ -55,7 +54,7 @@ public class Blog extends Sql{
     public Boolean del(String key) throws SQLException {//根据tittle或者summary查询
         Statement s=this.getConnection().createStatement();
         String s1;
-        s1="DELETE from blog where Number='"+key+"'";
+        s1="DELETE from essay where Number='"+key+"'";
         s.executeUpdate(s1);
         return true;
     }
@@ -66,7 +65,7 @@ public class Blog extends Sql{
         Statement s=this.getConnection().createStatement();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String t=df.format(time);
-        String Insert="insert into blog(Tittle,Summary,Path,Tip,Time) VALUES('"+tittle+"','"+summary+"','"+path+"','"+tip+"','"+t+"')";
+        String Insert="insert into essay(Tittle,Summary,Path,Tip,Time) VALUES('"+tittle+"','"+summary+"','"+path+"','"+tip+"','"+t+"')";
         s.executeUpdate(Insert);
         if(s!=null) {
             s.close();
@@ -76,7 +75,7 @@ public class Blog extends Sql{
     //其他需求实现
     public BigInteger Findmax() throws SQLException {
         Statement s=this.getConnection().createStatement();
-        String find="SELECT MAX(Number) from blog";
+        String find="SELECT MAX(Number) from essay";
         BigInteger num;
         s.execute(find);
         ResultSet r=s.getResultSet();
@@ -89,7 +88,7 @@ public class Blog extends Sql{
     }
     public String Findpath(String num) throws SQLException {
         Statement s=this.getConnection().createStatement();
-        String find="SELECT Path from blog where Number='"+num+"'";
+        String find="SELECT Path from essay where Number='"+num+"'";
         s.execute(find);
         ResultSet r=s.getResultSet();
         r.next();
@@ -102,13 +101,5 @@ public class Blog extends Sql{
         else{
             return p;
         }
-    }
-    public ResultSet Findrecomm() throws SQLException {
-        Statement s=this.getConnection().createStatement();
-        String find="SELECT * FROM `blog` where Number <='6'";
-        s.executeQuery(find);
-        ResultSet r=s.getResultSet();
-        return r;
-
     }
 }

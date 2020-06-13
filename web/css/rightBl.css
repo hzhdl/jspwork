@@ -1,0 +1,259 @@
+.bl{
+    width: 80%;
+    height: 200px;
+    position: relative;
+    left: 10%;
+    padding-bottom: 2px;
+    background-color: #ebf0ff;
+    box-shadow: 0 0 3px black ;
+    border:1px solid black;
+    border-radius: 5px;
+    margin: 0 0 20px;
+}
+.bl-word{
+    width:60%;
+    height:100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    float: left;
+}
+.bl-img{
+    width:40%;
+    height:100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    float:left;
+    background-image: url('../imgs/tipb.png');
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:100% 100%;
+}
+.bl-tittle{
+    width:100%;
+    height:30%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: x-large;
+}
+.bl-summary{
+    width:100%;
+    height:70%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.bl-foot{
+    width: 100%;
+    height: 10%;
+    margin: 0;
+    padding: 0;
+}
+.bl-info{
+    max-height: 100%;
+    width: auto;
+}
+.bl-info1{
+    max-height: 100%;
+    width: auto;
+    border-radius: 5px;
+
+}
+a{
+    text-decoration: none;
+}
+.bl-summary a:hover{
+    font-size:20px;
+}
+span{
+    height: max-content;
+    font-size: inherit;
+    line-height: initial;
+    position: relative;
+
+}
+td{
+    background-color: white;
+    margin-bottom: 2px;
+}
+tr{
+    border-radius: 5px;
+}
+
+/*messmanger  right  css*/
+.message{
+    width: 90%;
+    position: relative;
+    left: 5%;
+}
+.mess-child{
+    width: 90%;
+    position: relative;
+    left: 10%;
+}
+.mess-time{
+    float: right;
+    width: auto;
+    position: relative;
+    bottom: 0;
+}
+.mess-time1{
+    float: right;
+    width: auto;
+    position: relative;
+    bottom: 0;
+}
+.mess-parent{
+    background-color: white;
+    border-radius: 5px;
+    height: 50px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+.mess-word{
+    width: 100%;
+    height: 50%;
+}
+.mess-man{
+    width: 100%;
+    eight: 50%;
+}
+/*首页索引样式*/
+
+.recommend{
+    background-color: white;
+    margin-bottom: 20px;
+}
+.recom{
+    width: 31%;
+    height: 300px;
+    float: left;
+    margin-left: 2%;
+}
+.recom-img{
+    clear: both;
+    width: 80%;
+    left: 10%;
+    height: 30%;
+    top: 10%;
+    position: relative;
+}
+.recomimgs{
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.recom-word{
+    clear: both;
+    width: 90%;
+    left: 5%;
+    top: 15%;
+    position: relative;
+    height: 53%;
+}
+.recom-tittle{
+    font-size: 20px;
+    text-align: center;
+    line-height: 20px;
+    width: 100%;
+    display: block;
+}
+.recom-summary{
+    width: 100%;
+    display: block;
+}
+.recom:hover{
+    display: block;
+    box-shadow: 0 0 5px 0px;
+}
+.head{
+    bottom: 0;
+    margin-bottom: 10px;
+    padding-top: 5px;
+}
+.blog-block{
+    background-color: white;
+}
+
+
+
+.blog{
+    width: 100%;
+    height: 200px;
+    position: relative;
+    padding-bottom: 4px;
+    border-bottom: #0C1021 1px solid;
+    padding-top: 10px;
+}
+.blog-word{
+    width:55%;
+    height:100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    float: left;
+    left: 4%;
+    position: relative;
+}
+.blog-img{
+    width:40%;
+    height:100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    float:left;
+    left: 2%;
+    position: relative;
+    background-image: url('../imgs/tipb.png');
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:100% 100%;
+}
+.blog-tittle{
+    width:100%;
+    height:30%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: x-large;
+}
+.blog-summary{
+    width:100%;
+    height:70%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.blog-foot{
+    width: 100%;
+    height: 10%;
+    margin: 0;
+    padding: 0;
+    margin-left: 2%;
+    margin-top: 3px;
+}
+.blog-info{
+    max-height: 100%;
+    width: auto;
+}
+.blog-info1{
+    max-height: 100%;
+    width: auto;
+    border-radius: 5px;
+
+}
+.blog-summary a:hover{
+    font-size:20px;
+}
+.blog-foot span{
+    bottom: 4px;
+    font-size: 15px;
+}
+.blog:hover{
+    display: block;
+    background-color: #e2edf0;
+}

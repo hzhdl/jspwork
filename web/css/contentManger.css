@@ -5,18 +5,17 @@
 .left{
     float: left;
     height: 100%;
-    width: 30%;
-    background:whitesmoke;
+    width: 28%;
     font-family: Verdana, Arial, Helvetica, sans-serif;
     margin: 0;
     font-size: 80%;
     font-weight: bold;
-    border:1px solid red;
+    position: fixed;
 }
 .right{
-    float: left;
-    height: auto;
+    float: right;
     width: 70%;
+    height: auto;
     margin: 0;
     border-radius: 5px;
 }
@@ -26,14 +25,22 @@
     margin: 0;
     padding: 0;
 }
+.menu{
+    width: 70%;
+    height: auto;
+    position: relative;
+    left: 15%;
+    clear: both;
+}
 
 .menu li{
-    border-bottom:1px solid red;
-
+background-color: white;
+margin-bottom: 1px;
 }
 .menu li:hover{
     display:block;
-    background:blue;
+    background: #f0f0f0;
+    border-left:5px solid red;
 }
 .menu li a {
     height: auto;
@@ -51,4 +58,7 @@
 }
 .menu li a:hover, .menu li a:active {
     font-size:15px;
+}
+.find a:hover{
+    background-color: lightsteelblue;
 }

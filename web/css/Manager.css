@@ -8,7 +8,8 @@
     top: 0;/*离顶部的距离为0*/
     left:0;
     background:black;
-
+    z-index: 20;
+    position: sticky;
 }
 .top2{
     /* 设置宽度高度背景颜色 */
