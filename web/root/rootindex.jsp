@@ -22,7 +22,7 @@
     <ul>
         <li><a id="name" href="rootindex.jsp">xxx的博客</a></li>
         <li><a id="root" href="../index.jsp">退出管理</a></li>
-        <li><a id="n1" href="#">关于我</a></li>
+        <li><a id="n1" href="rootabout.jsp">关于我</a></li>
         <li><a id="n2" href="MessageManger.jsp">留言板</a></li>
         <li><a id="n3" href="EssayManger.jsp">随笔</a></li>
         <li><a id="n4" href="BlogManger.jsp">博客</a></li>
@@ -76,8 +76,8 @@
                 <div style="width: 100%;height: 90%">
                     <div class="blog-img"><img class="recomimgs"/></div>
                     <div class="blog-word">
-                        <div class="blog-tittle"><a href="../test.jsp?te=<%=res.getString(1)%>"><%=res.getString(2)%></a></div>
-                        <div class="blog-summary"><a href="../test.jsp?te=<%=res.getString(1)%>"><%=res.getString(5)%></a></div>
+                        <div class="blog-tittle"><a href="../ShowBlog.jsp?te=<%=res.getString(1)%>"><%=res.getString(2)%></a></div>
+                        <div class="blog-summary"><a href="../ShowBlog.jsp?te=<%=res.getString(1)%>"><%=res.getString(5)%></a></div>
                     </div>
                 </div>
                 <div class="blog-foot">

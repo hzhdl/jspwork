@@ -22,7 +22,7 @@
     <ul>
         <li><a id="name" href="rootindex.jsp">xxx的博客</a></li>
         <li><a id="root" href="../index.jsp">退出管理</a></li>
-        <li><a id="n1" href="#">关于我</a></li>
+        <li><a id="n1" href="rootabout.jsp">关于我</a></li>
         <li><a id="n2" href="MessageManger.jsp">留言板</a></li>
         <li><a id="n3" href="EssayManger.jsp">随笔</a></li>
         <li><a id="n4" href="BlogManger.jsp">博客</a></li>
@@ -59,7 +59,7 @@
         <div class="message">
             <div class="mess-parent">
             <div class="mess-word">
-                <div class="mess-content">热心网友：<%=res.getString(2)%></div>
+                <div class="mess-content">@热心网友：<%=res.getString(2)%></div>
             </div>
             <div class="mess-man">
                 <input type="button"  class="bl-info1" onclick="Back('<%=res.getString(1)%>')" style="display: none;position: relative;bottom: 0px;left:0;" value="回复"/>
@@ -77,7 +77,7 @@
                 %>
                 <div class="mess-parent">
                     <div class="mess-word">
-                        <div class="mess-content">热心网友：<%=r1.getString(2)%></div>
+                        <div class="mess-content">站主回复：<%=r1.getString(2)%></div>
                     </div>
                     <div class="mess-man">
                         <%--<input type="button"  class="bl-info1" onclick="" style="display: none;position: relative;bottom: 0px;left:0;" value="修改"/>--%>
@@ -108,9 +108,11 @@
             background-color: black;
             opacity: 0.6;
             z-index: 100;"></div>
-<div id="my_dialog" class="m" style="display: none;width: 500px;
-            height: 400px;
-            background-color: white;
+<div id="my_dialog" class="m" style="display: none;width: 300px;
+            height: 200px;
+            background-color: #BDE9FF;
+            text-align: center;
+            border-radius: 10px;
             position: fixed;
             left: 50%;
             top: 50%;
@@ -121,7 +123,9 @@
         <p>评论：<input type="text" id="mess" name="mess"/></p>
         <input type="text" id="flag" name="flag" hidden/>
         <input type="text" id="par" name="par" hidden/>
-        <div style="float:right;">
+        <div style="position: relative;
+    width: 40%;
+    left: 30%;">
             <input type="button" class="my-btn-gray" onclick="create_paper_cancel()" value="取消"></input>
             <input type="button" class="my-btn-blue" onclick="create_paper_save()" value="保存"></input>
         </div>

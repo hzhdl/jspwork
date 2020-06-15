@@ -2,6 +2,7 @@
 <%@ page import="java.sql.Date" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
+<%@ page import="blog.Message" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -29,62 +30,58 @@
 </div>
 <div class="content">
     <div class="left">
-        <div class="recommend" style="width: 100%;clear: both">
-            <div class="head">
-                <span>热门推荐</span>
-                <hr/>
-            </div>
-            <div id="cal" style="background-color: white;width: 100%">
-                <%
-                    Blog bl= null;
-                    bl = new Blog();
-                    ResultSet resu=bl.Findrecomm();
-                    int i=0;
-                    while(resu.next()){
-                %>
-                <div class="recom">
-                    <div class="recom-img"><img class="recomimgs"/></div>
-                    <div class="recom-word">
-                        <div class="recom-tittle"><a href=".test.jsp?te=<%=resu.getString(1)%>"><%=resu.getString(2)%></a></div>
-                        <div class="recom-summary"><a href="test.jsp?te=<%=resu.getString(1)%>"><%=resu.getString(5)%></a></div>
-                    </div>
-                </div>
-                <%
-                        i++;
-                    }
-                    bl.del();
-                %>
-            </div>
-        </div>
         <div class="blog-block" style="width: 100%;clear: both">
             <div class="head" >
                 <span>个人博客</span>
+                <a onclick="add()" class="messa-add" style="font-size: 15px;">留言</a>
                 <hr/>
             </div>
             <%
-                Blog b= null;
-                b = new Blog();
-                ResultSet res=b.check(new Date(new java.util.Date().getTime()),true);
+                Message m= null;
+                m = new Message();
+                String key=request.getParameter("key");
+                ResultSet res;
+                if(key==null||key==""){
+                    res=m.getparentmessage();}
+                else {
+                    res=m.LikeFind(key);
+                }
                 while(res.next()){
             %>
-            <div class="blog">
-                <div style="width: 100%;height: 90%">
-                    <div class="blog-img"><img class="recomimgs"/></div>
-                    <div class="blog-word">
-                        <div class="blog-tittle"><a href="test.jsp?te=<%=res.getString(1)%>"><%=res.getString(2)%></a></div>
-                        <div class="blog-summary"><a href="test.jsp?te=<%=res.getString(1)%>"><%=res.getString(5)%></a></div>
+            <div class="messa">
+                <div class="messa-parent">
+                    <div class="messa-word">
+                        <div class="messa-content">@热心网友：<%=res.getString(2)%></div>
                     </div>
+                    <div class="messa-man">
+                        <div class="messa-time"><%=res.getString(3)%></div></div>
                 </div>
-                <div class="blog-foot">
-                    <img class="blog-info" id="blog-tip" src="imgs/tipb.png"/><span><%=res.getString(3)%></span>
-                    <img class="blog-info" id="blog-time" src="imgs/timeb.png"/><span><%=res.getString(6)%></span>
-                    <img class="blog-info" id="blog-good" src="imgs/goodb.png"/><span>99</span>
-                    <img class="blog-info" id="blog-watch" src="imgs/watchb.png"/><span>3</span>
+                <div class="messa-child" style="">
+                    <%
+                        Message m1= null;
+                        m1 = new Message();
+                        ResultSet r1;
+                        r1=m1.getchildmessage(res.getString(1));
+                        while(r1.next()){
+                    %>
+                    <div class="messa-parent">
+                        <div class="messa-word">
+                            <div class="messa-content">站主回复：<%=r1.getString(2)%></div>
+                        </div>
+                        <div class="messa-man">
+                            <div class="messa-time1"><%=r1.getString(3)%></div></div>
+                    </div>
+                    <%
+                        }
+                        r1.close();
+                        m1.del();
+                    %>
                 </div>
             </div>
             <%
                 }
-                b.del();
+                res.close();
+                m.del();
             %>
         </div>
     </div>
@@ -146,6 +143,38 @@
             </ul>
         </div>--%>
     </div>
+</div>
+<div id="c1" class="c" style="display: none;position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: black;
+            opacity: 0.6;
+            z-index: 100;"></div>
+<div id="my_dialog" class="m" style="display: none;width: 300px;
+            height: 200px;
+            background-color: #BDE9FF;
+            text-align: center;
+            border-radius: 10px;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-left: -250px;
+            margin-top: -200px;
+            z-index: 101;" >
+    <form id="tj" action="OpMessage">
+        <p>评论：<input type="text" id="mess" name="mess"/></p>
+        <input type="text" id="flag" name="flag" hidden/>
+        <input type="text" id="par" name="par" hidden/>
+        <input type="text" id="flag1" name="flag1" hidden/>
+        <div style="position: relative;
+    width: 40%;
+    left: 30%;">
+            <input type="button" class="my-btn-gray" onclick="create_paper_cancel()" value="取消"></input>
+            <input type="button" class="my-btn-blue" onclick="create_paper_save()" value="保存"></input>
+        </div>
+    </form>
 </div>
 <script type="text/javascript">
     //背景控制
@@ -217,7 +246,24 @@
         }
     }
     rssshow();
-
+//留言处理
+    function add() {
+        document.getElementById('c1').style.display="block";
+        document.getElementById('my_dialog').style.display="block";
+        document.getElementById('par').value="";
+    }
+    function create_paper_cancel(){
+        document.getElementById('my_dialog').style.display="none";
+        document.getElementById('c1').style.display="none";
+    }
+    function create_paper_save(){
+        document.getElementById('my_dialog').style.display="none";
+        document.getElementById('c1').style.display="none";
+        var tj=document.getElementById('tj');
+        document.getElementById('flag').value=1;
+        document.getElementById('flag1').value=1;
+        tj.submit();
+    }
 
 
 </script>

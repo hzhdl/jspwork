@@ -25,10 +25,10 @@
     padding: 0;
     border: 0;
     float:left;
-    background-image: url('../imgs/tipb.png');
+    /*background-image: url('../imgs/tipb.png');
     background-repeat:no-repeat;
     background-position:center center;
-    background-size:100% 100%;
+    background-size:100% 100%;*/
 }
 .bl-tittle{
     width:100%;
@@ -256,4 +256,52 @@ tr{
 .blog:hover{
     display: block;
     background-color: #e2edf0;
+}
+
+/*留言板功能*/
+.messa{
+    width: 90%;
+    position: relative;
+    left: 5%;
+    border-bottom: #0C1021 1px solid;
+}
+.messa-child{
+    width: 90%;
+    position: relative;
+    left: 10%;
+}
+.messa-time{
+    float: right;
+    width: auto;
+    position: relative;
+    bottom: 0;
+}
+.messa-time1{
+    float: right;
+    width: auto;
+    position: relative;
+    bottom: 0;
+}
+.messa-parent{
+    background-color: white;
+    border-radius: 5px;
+    height: 50px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+.messa-word{
+    width: 100%;
+    height: 50%;
+}
+.messa-man{
+    width: 100%;
+    eight: 50%;
+}
+.messa-add{
+    background-color: #e4eef0;
+    float: right;
+    padding: 6px;
+}
+.messa-add:hover{
+    background-color: #00c4ff;
 }

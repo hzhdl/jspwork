@@ -18,6 +18,7 @@ public class OpMessage extends HttpServlet {
         String flag=request.getParameter("flag");
         String key=request.getParameter("mess");
         String par=request.getParameter("par");
+        String flag1=request.getParameter("flag1");
         Message m=new Message();
         if(flag.equals("1")){
             if(par==null||par==""){
@@ -42,7 +43,11 @@ public class OpMessage extends HttpServlet {
                 e.printStackTrace();
             }
         }
-        response.sendRedirect("root/MessageManger.jsp");
+        if(flag1==null||flag1==""){
+            response.sendRedirect("root/MessageManger.jsp");}
+        else{
+            response.sendRedirect("Messageboard.jsp");
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

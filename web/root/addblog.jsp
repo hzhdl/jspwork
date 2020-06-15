@@ -1,3 +1,5 @@
+<%@ page import="blog.Tip" %>
+<%@ page import="java.sql.ResultSet" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zh">
@@ -113,21 +115,38 @@
             background-color: black;
             opacity: 0.6;
             z-index: 100;"></div>
-<div id="my_dialog" class="m" style="display: none;width: 500px;
-            height: 400px;
-            background-color: white;
+<div id="my_dialog" class="m" style="display: none;width: 300px;
+            height: 200px;
+            background-color: #BDE9FF;
+            text-align: center;
+            border-radius: 10px;
             position: fixed;
             left: 50%;
             top: 50%;
             margin-left: -250px;
             margin-top: -200px;
-            z-index: 101;" >
-    <form id="tj" action="../SaveBlog">
+            z-index: 101;
+            " >
+    <form id="tj" action="../SaveBlog" style="margin-top: 15px;">
         <p>标题：<input type="text" id="tittle" name="tittle"/></p>
         <p>摘要：<input type="text" id="summary" name="summary"/></p>
-        <p>标签：<input type="text" id="tips" name="tips"/></p>
+        <p>标签：<input id="tips" type="text"  name="tips" list="sexlist">
+            <datalist id="sexlist">
+                <%
+                    Tip tips=new Tip();
+                    ResultSet restip=tips.getall();
+                    while (restip.next()){
+                %>
+                <option value="<%=restip.getString(1)%>"><%=restip.getString(1)%></option><%
+                }
+                    restip.close();
+                    tips.del();
+            %>
+            </datalist></p>
         <input type="text" id="te" name="te" hidden/>
-        <div style="float:right;">
+        <div style="position: relative;
+    width: 40%;
+    left: 30%;">
             <input type="button" class="my-btn-gray" onclick="create_paper_cancel()" value="取消"></input>
             <input type="button" class="my-btn-blue" onclick="create_paper_save()" value="保存"></input>
         </div>

@@ -28,33 +28,6 @@
 </div>
 <div class="content">
     <div class="left">
-        <div class="recommend" style="width: 100%;clear: both">
-            <div class="head">
-                <span>热门推荐</span>
-                <hr/>
-            </div>
-            <div id="cal" style="background-color: white;width: 100%">
-                <%
-                    Blog bl= null;
-                    bl = new Blog();
-                    ResultSet resu=bl.Findrecomm();
-                    int i=0;
-                    while(resu.next()){
-                %>
-                <div class="recom">
-                    <div class="recom-img"><img class="recomimgs"/></div>
-                    <div class="recom-word">
-                        <div class="recom-tittle"><a href=".test.jsp?te=<%=resu.getString(1)%>"><%=resu.getString(2)%></a></div>
-                        <div class="recom-summary"><a href="test.jsp?te=<%=resu.getString(1)%>"><%=resu.getString(5)%></a></div>
-                    </div>
-                </div>
-                <%
-                        i++;
-                    }
-                    bl.del();
-                %>
-            </div>
-        </div>
         <div class="blog-block" style="width: 100%;clear: both">
             <div class="head" >
                 <span>个人博客</span>
@@ -70,8 +43,8 @@
                 <div style="width: 100%;height: 90%">
                     <div class="blog-img"><img class="recomimgs"/></div>
                     <div class="blog-word">
-                        <div class="blog-tittle"><a href="test.jsp?te=<%=res.getString(1)%>"><%=res.getString(2)%></a></div>
-                        <div class="blog-summary"><a href="test.jsp?te=<%=res.getString(1)%>"><%=res.getString(5)%></a></div>
+                        <div class="blog-tittle"><a href="ShowBlog.jsp?te=<%=res.getString(1)%>"><%=res.getString(2)%></a></div>
+                        <div class="blog-summary"><a href="ShowBlog.jsp?te=<%=res.getString(1)%>"><%=res.getString(5)%></a></div>
                     </div>
                 </div>
                 <div class="blog-foot">
@@ -148,15 +121,6 @@
 </div>
 <script type="text/javascript">
     //背景控制
-    var tmp=document.getElementsByClassName("recom");
-    var t=tmp.length;
-    var tt;
-    if(t%3==0){
-        tt=t/3;
-    }
-    else{
-        tt=(t-(t%3))/3+1;}
-    document.getElementById('cal').style.height=tt*300+20;
     //
 
     //图片加载

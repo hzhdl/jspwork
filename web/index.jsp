@@ -43,8 +43,8 @@
                     <div class="recom">
                         <div class="recom-img"><img class="recomimgs"/></div>
                         <div class="recom-word">
-                            <div class="recom-tittle"><a href=".test.jsp?te=<%=resu.getString(1)%>"><%=resu.getString(2)%></a></div>
-                            <div class="recom-summary"><a href="test.jsp?te=<%=resu.getString(1)%>"><%=resu.getString(5)%></a></div>
+                            <div class="recom-tittle"><a href="ShowBlog.jsp?te=<%=resu.getString(1)%>"><%=resu.getString(2)%></a></div>
+                            <div class="recom-summary"><a href="ShowBlog.jsp?te=<%=resu.getString(1)%>"><%=resu.getString(5)%></a></div>
                         </div>
                     </div>
                     <%
@@ -69,8 +69,8 @@
                     <div style="width: 100%;height: 90%">
                         <div class="blog-img"><img class="recomimgs"/></div>
                         <div class="blog-word">
-                            <div class="blog-tittle"><a href="test.jsp?te=<%=res.getString(1)%>"><%=res.getString(2)%></a></div>
-                            <div class="blog-summary"><a href="test.jsp?te=<%=res.getString(1)%>"><%=res.getString(5)%></a></div>
+                            <div class="blog-tittle"><a href="ShowBlog.jsp?te=<%=res.getString(1)%>"><%=res.getString(2)%></a></div>
+                            <div class="blog-summary"><a href="ShowBlog.jsp?te=<%=res.getString(1)%>"><%=res.getString(5)%></a></div>
                         </div>
                     </div>
                     <div class="blog-foot">

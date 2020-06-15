@@ -5,92 +5,92 @@
 <html>
 <head>
     <title>Title</title>
-    <link href="css/head.css" type="text/css" rel="stylesheet"/>
-    <link href="css/content.css" type="text/css" rel="stylesheet"/>
-    <link href="css/rightBl.css" type="text/css" rel="stylesheet"/>
+    <link href="../css/head.css" type="text/css" rel="stylesheet"/>
+    <link href="../css/content.css" type="text/css" rel="stylesheet"/>
+    <link href="../css/rightBl.css" type="text/css" rel="stylesheet"/>
     <style>
-    html, body {
-    margin: 0;
-    padding: 0;
-    background-color: #29454d;
-    /*禁止文字被选中*/
-    -moz-user-select: none;
-    /*火狐*/
-    -webkit-user-select: none;
-    /*webkit浏览器*/
-    -ms-user-select: none;
-    /*IE10*/
-    -khtml-user-select: none;
-    /*早期浏览器*/
-    user-select: none;
-    overflow: hidden;
-    }
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #29454d;
+            /*禁止文字被选中*/
+            -moz-user-select: none;
+            /*火狐*/
+            -webkit-user-select: none;
+            /*webkit浏览器*/
+            -ms-user-select: none;
+            /*IE10*/
+            -khtml-user-select: none;
+            /*早期浏览器*/
+            user-select: none;
+            overflow: hidden;
+        }
 
-    .box {
-    position: relative;
-    height: 500px;
-    width: 500px;
-    margin: 100px auto;
-    transform-style: preserve-3d;
-    perspective: 2000px;
-    }
+        .box {
+            position: relative;
+            height: 500px;
+            width: 500px;
+            margin: 100px auto;
+            transform-style: preserve-3d;
+            perspective: 2000px;
+        }
 
-    .di {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    height: 200px;
-    width: 200px;
-    transform: translate(-50%, -50%) rotatex(90deg);
-    transform-style: preserve-3d;
-    }
+        .di {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            height: 200px;
+            width: 200px;
+            transform: translate(-50%, -50%) rotatex(90deg);
+            transform-style: preserve-3d;
+        }
 
-    .z {
-    position: relative;
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-    transform-style: preserve-3d;
-    /*transform: rotatez(1deg);*/
-    }
+        .z {
+            position: relative;
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            transform-style: preserve-3d;
+            /*transform: rotatez(1deg);*/
+        }
 
-    p {
-    margin: 0;
-    position: absolute;
-    top: 0;
-    /*为了保证圆心在父盒子中心，父盒子旋转时圆心稳定，所以设置left*/
-    left: 25px;
-    height: 200px;
-    width: 150px;
-    border: 2px solid #fd7068;
-    box-sizing: border-box;
-    background-color: #ffffff;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    /*opacity: .7;*/
-    font-size: 20px;
-    line-height: 40px;
-    text-align: center;
-    /*box-shadow: 0 0 100px #16ff8b;*/
-    /*倒影，不兼容*/
-    -webkit-box-reflect: below 10px -webkit-linear-gradient(top, rgba(250, 250, 250, 0), rgba(250, 250, 250, .0) 30%, rgba(250, 250, 250, 0.5));
-    box-reflect: below 10px -webkit-linear-gradient(top, rgba(250, 250, 250, 0), rgba(250, 250, 250, .0) 30%, rgba(250, 250, 250, 0.5));
-    /*backface-visibility: hidden;*/
-    }
+        p {
+            margin: 0;
+            position: absolute;
+            top: 0;
+            /*为了保证圆心在父盒子中心，父盒子旋转时圆心稳定，所以设置left*/
+            left: 25px;
+            height: 200px;
+            width: 150px;
+            border: 2px solid #fd7068;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            /*opacity: .7;*/
+            font-size: 20px;
+            line-height: 40px;
+            text-align: center;
+            /*box-shadow: 0 0 100px #16ff8b;*/
+            /*倒影，不兼容*/
+            -webkit-box-reflect: below 10px -webkit-linear-gradient(top, rgba(250, 250, 250, 0), rgba(250, 250, 250, .0) 30%, rgba(250, 250, 250, 0.5));
+            box-reflect: below 10px -webkit-linear-gradient(top, rgba(250, 250, 250, 0), rgba(250, 250, 250, .0) 30%, rgba(250, 250, 250, 0.5));
+            /*backface-visibility: hidden;*/
+        }
     </style>
 
-    </head>
+</head>
 <body>
 <!-- 头部 -->
 <div class="top1"style="text-align: center;">
     <ul>
-        <li><a id="name" href="index.jsp">xxx的博客</a></li>
-        <li><a id="root" href="root/rootlogin.jsp">管理登录</a></li>
-        <li><a id="n1" href="about.jsp">关于我</a></li>
-        <li><a id="n2" href="Messageboard.jsp">留言板</a></li>
-        <li><a id="n3" href="essay.jsp">随笔</a></li>
-        <li><a id="n4" href="Blog.jsp">博客</a></li>
+        <li><a id="name" href="rootindex.jsp">xxx的博客</a></li>
+        <li><a id="root" href="../index.jsp">退出管理</a></li>
+        <li><a id="n1" href="rootabout.jsp">关于我</a></li>
+        <li><a id="n2" href="MessageManger.jsp">留言板</a></li>
+        <li><a id="n3" href="EssayManger.jsp">随笔</a></li>
+        <li><a id="n4" href="BlogManger.jsp">博客</a></li>
     </ul>
 </div>
 
@@ -101,21 +101,21 @@
         <div class="z">
             <p>侯志豪
                 负责：
-                    后端事务的处理
-                    页面框架的搭建
-                    数据库设计实现
+                后端事务的处理
+                页面框架的搭建
+                数据库设计实现
             </p>
             <p>黑光辉
                 负责：
-                    前端页面的编写
-                    前端样式的设计
-                    PPT制作和整理
+                前端页面的编写
+                前端样式的设计
+                PPT制作和整理
             </p>
             <p>韩根旺
                 负责：
-                    前端页面的编写
-                    资源搜集和整理
-                    PPT制作和整理
+                前端页面的编写
+                资源搜集和整理
+                PPT制作和整理
             </p>
         </div>
     </div>

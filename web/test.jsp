@@ -1,6 +1,8 @@
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="java.io.FileReader" %>
-<%@ page import="blog.Blog" %><%--
+<%@ page import="blog.Blog" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--
   Created by IntelliJ IDEA.
   User: smallmonkey
   Date: 2020/5/27
@@ -11,24 +13,25 @@
 <html lang="zh">
 <head>
     <meta charset="utf-8" />
-    <title>Simple example - Editor.md examples</title>
+    <title>个人博客</title>
     <link rel="stylesheet" href="editor.md-master/examples/css/style.css" />
     <link rel="stylesheet" href="editor.md-master/css/editormd.css" />
 </head>
 <body>
 <div style="margin-left: 100px;width: 90%" id="test-editormd">
-    　　　　<textarea style="display:none;"><%
-    String path=request.getServletContext().getRealPath("/");
-    String num=request.getParameter("te");
-    Blog b=new Blog();
-    String p=b.Findpath(num);
-    FileReader fr=new FileReader(path+p);
-    int c=fr.read();
-    while(c!=-1) {
-        out.print((char)c);
-        c=fr.read();
-    }
-    fr.close();
+    　　　　<textarea>
+<%
+String path=request.getServletContext().getRealPath("/");
+String num=request.getParameter("te");
+Blog b=new Blog();
+String p=b.Findpath(num);
+FileReader fr=new FileReader(path+p);
+int c=fr.read();
+while(c!=-1) {
+    out.print((char)c);
+    c=fr.read();
+}
+fr.close();
 %></textarea>
 </div>
 <script src="editor.md-master/examples/js/jquery.min.js"></script>

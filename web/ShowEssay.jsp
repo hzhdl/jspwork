@@ -1,20 +1,28 @@
-
+<%--
+  Created by IntelliJ IDEA.
+  User: smallmonkey
+  Date: 2020/6/15
+  Time: 8:38
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="java.io.FileReader" %>
 <%@ page import="blog.Blog" %>
-<%@ page import="java.sql.Date" %>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.SQLException" %>
 <%@ page import="blog.Essay" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="zh">
 <head>
-    <title>Title</title>
+    <meta charset="utf-8" />
+    <title>个人博客</title>
+    <link rel="stylesheet" href="editor.md-master/examples/css/style.css" />
+    <link rel="stylesheet" href="editor.md-master/css/editormd.css" />
     <link href="css/head.css" type="text/css" rel="stylesheet"/>
     <link href="css/content.css" type="text/css" rel="stylesheet"/>
     <link href="css/rightBl.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-<!-- 头部 -->
-<div class="top1"style="text-align: center;">
+<div class="top1"style="text-align: center;height: 40px;font-size: 15px">
     <ul>
         <li><a id="name" href="index.jsp">xxx的博客</a></li>
         <li><a id="root" href="root/rootlogin.jsp">管理登录</a></li>
@@ -24,45 +32,49 @@
         <li><a id="n4" href="Blog.jsp">博客</a></li>
     </ul>
 </div>
-<div class='top2'style="text-align: center;">
-    <h3 class='h1'style="text-align:center;line-height: 240px;width: 100%;color: whitesmoke;">凡心之所向 即锋之所指</h3>
-    <p class='h4' style="text-align:center;line-height: 40px;width: 100%;color: whitesmoke;">The direction of the heart is the direction of the front</p>
-</div>
 <div class="content">
-    <div class="left">
-        <div class="blog-block" style="width: 100%;clear: both">
-            <div class="head" >
-                <span>个人随笔</span>
-                <hr/>
-            </div>
-            <%
-                Essay b= null;
-                b = new Essay();
-                ResultSet res=b.check(new Date(new java.util.Date().getTime()),true);
-                while(res.next()){
-            %>
-            <div class="blog">
-                <div style="width: 100%;height: 90%">
-                    <div class="blog-img"><img class="recomimgs"/></div>
-                    <div class="blog-word">
-                        <div class="blog-tittle"><a href="ShowEssay.jsp?te=<%=res.getString(1)%>"><%=res.getString(2)%></a></div>
-                        <div class="blog-summary"><a href="ShowEssay.jsp?te=<%=res.getString(1)%>"><%=res.getString(5)%></a></div>
-                    </div>
-                </div>
-                <div class="blog-foot">
-                    <img class="blog-info" id="blog-tip" src="imgs/tipb.png"/><span><%=res.getString(3)%></span>
-                    <img class="blog-info" id="blog-time" src="imgs/timeb.png"/><span><%=res.getString(6)%></span>
-                    <img class="blog-info" id="blog-good" src="imgs/goodb.png"/><span>99</span>
-                    <img class="blog-info" id="blog-watch" src="imgs/watchb.png"/><span>3</span>
-                </div>
-            </div>
-            <%
-                }
-                b.del();
-            %>
+    <div class="left" style="position: relative;
+    margin-top: 60px;
+    left: -10%;
+}">
+        <div style="margin-left: 100px;width: 90%" id="test-editormd">
+            　　　　<textarea>
+<%
+    String path=request.getServletContext().getRealPath("/");
+    String num=request.getParameter("te");
+    Essay b=new Essay();
+    String p=b.Findpath(num);
+    FileReader fr=new FileReader(path+p);
+    int c=fr.read();
+    while(c!=-1) {
+        out.print((char)c);
+        c=fr.read();
+    }
+    fr.close();
+%></textarea>
         </div>
+        <script src="editor.md-master/examples/js/jquery.min.js"></script>
+        <script src="editor.md-master/lib/marked.min.js"></script>
+        <script src="editor.md-master/lib/prettify.min.js"></script>
+        <script src="editor.md-master/lib/raphael.min.js"></script>
+        <script src="editor.md-master/lib/underscore.min.js"></script>
+        <script src="editor.md-master/lib/sequence-diagram.min.js"></script>
+        <script src="editor.md-master/lib/flowchart.min.js"></script>
+        <script src="editor.md-master/lib/jquery.flowchart.min.js"></script>
+        <script src="editor.md-master/editormd.js"></script>
+        <script type="text/javascript">
+            editormd.markdownToHTML("test-editormd", {
+                htmlDecode      : "style,script,iframe",
+                syncScrolling : "single",
+                emoji           : true,
+                taskList        : true,
+                tex             : true,  // 默认不解析
+                flowChart       : true,  // 默认不解析
+                sequenceDiagram : true  // 默认不解析
+            });
+        </script>
     </div>
-    <div class="right">
+    <div class="right" style="margin-top: 60px;">
         <div class="menu" style="width: 100%;height: auto;">
             <div class="head">
                 <span>rss热门信息</span>
@@ -80,7 +92,7 @@
                 <li style="float: left;width: 100%"><a href="#" class="rss"></a></li>
 
             </ul>
-            <div class="menuimg"><img id="rssimg" src="imgs/pullblack.png" onclick="rssshow()"/></div>
+            <div class="menuimg"><img id="rssimg" src="imgs/pullblack.png"  onclick="rssshow()" style="left: 0"/></div>
         </div>
         <div class="menu" style="width: 100%;height: auto;">
             <div class="head">
@@ -122,29 +134,6 @@
     </div>
 </div>
 <script type="text/javascript">
-    //背景控制
-    //
-
-    //图片加载
-    var count=1;
-    function pic() {
-        var img=document.getElementsByClassName("recomimgs");
-        var j;
-        for(j = 0; j < img.length; j++){
-            img[j].src="imgs/images/img"+count+".jpg";
-            count++;
-        }
-    }
-    /*function picblog() {
-        var img1=document.getElementsByClassName("blogimgs");
-        var j;
-        for(j = 0; j < img1.length; j++){
-            img1[j].src="../imgs/images/img"+count+".jpg";
-            count++;
-        }
-    }*/
-    pic();
-
     //RSS数据获取
     var result;
     function rssget() {
@@ -182,9 +171,6 @@
         }
     }
     rssshow();
-
-
-
 </script>
 </body>
 </html>
