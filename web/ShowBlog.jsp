@@ -5,9 +5,8 @@
   Time: 8:38
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="java.io.PrintWriter" %>
-<%@ page import="java.io.FileReader" %>
 <%@ page import="blog.Blog" %>
+<%@ page import="java.io.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zh">
@@ -43,13 +42,14 @@
     String num=request.getParameter("te");
     Blog b=new Blog();
     String p=b.Findpath(num);
-    FileReader fr=new FileReader(path+p);
-    int c=fr.read();
-    while(c!=-1) {
-        out.print((char)c);
-        c=fr.read();
+    FileInputStream fis = new FileInputStream(path+p);
+    InputStreamReader isr = new InputStreamReader(fis, "GBK");
+    BufferedReader br = new BufferedReader(isr);
+    String line = null;
+    while ((line = br.readLine()) != null) {
+        out.print(line);
+        out.print("\n"); // 补上换行符   
     }
-    fr.close();
 %></textarea>
 </div>
 <script src="editor.md-master/examples/js/jquery.min.js"></script>
